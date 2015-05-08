@@ -2,6 +2,8 @@
 
 Uses Retrofit to encapsulate the Leanplum API.
 
+![](https://travis-ci.org/scopely/leanplum-java-sdk.svg)
+
 ## Testing
 Make sure to set the environment variables `LEANPLUM_APP_ID` and `LEANPLUM_KEY` to
 a set of valid development credentials in order to run the tests. You should use

@@ -2,8 +2,6 @@ package com.scopely.integration.leanplum;
 
 import retrofit.RequestInterceptor;
 
-import java.util.concurrent.TimeUnit;
-
 public class LeanplumInterceptor implements RequestInterceptor {
     private final String appId;
     private final String clientKey;
@@ -43,9 +41,7 @@ public class LeanplumInterceptor implements RequestInterceptor {
         request.addEncodedQueryParam("devMode", Boolean.toString(devMode));
         request.addEncodedQueryParam("apiVersion", apiVersion);
 
-        if (multi) {
-            request.addEncodedQueryParam("time", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())));
-        } else {
+        if (!multi) {
             if (userId != null) {
                 request.addEncodedQueryParam("userId", userId);
             }

@@ -21,7 +21,7 @@ public class ProductionApiClientTest {
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint("https://www.leanplum.com")
                 .setRequestInterceptor(
-                        LeanplumInterceptor.createInterceptorWithUserId(appId, key, false, "avram@scopely.com"))
+                        LeanplumInterceptor.createInterceptorWithUserId(appId, key, true, "avram@scopely.com"))
                 .setConverter(new JacksonConverter(objectMapper))
                 .build();
 

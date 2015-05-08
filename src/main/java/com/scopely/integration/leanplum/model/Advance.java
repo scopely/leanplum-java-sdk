@@ -8,7 +8,7 @@ import java.util.AbstractMap;
 import java.util.Map;
 import java.util.Set;
 
-public class Advance extends MinimalMap {
+public class Advance extends MinimalMap implements LeanplumMultiplexable {
     String state;
     String info;
     ActionParams params;
@@ -17,6 +17,11 @@ public class Advance extends MinimalMap {
         this.state = state;
         this.info = info;
         this.params = params;
+    }
+
+    @Override
+    public String action() {
+        return "advance";
     }
 
     @NotNull

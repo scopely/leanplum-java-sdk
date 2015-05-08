@@ -13,6 +13,7 @@ public class TrackTest extends ProductionApiClientTest {
         TestSubscriber<LeanplumActionResponse> testSubscriber = track(new Track(null, null, null, null, null, null, true));
         assertThat(testSubscriber.getOnErrorEvents()).hasSize(1);
         assertThat(testSubscriber.getOnErrorEvents().get(0)).isInstanceOf(LeanplumException.class);
+        //noinspection ThrowableResultOfMethodCallIgnored
         assertThat(((LeanplumException) testSubscriber.getOnErrorEvents().get(0)).getResponse().error).isEqualsToByComparingFields(LeanplumError.createLeanplumError("'event' must be provided"));
     }
 
@@ -24,7 +25,6 @@ public class TrackTest extends ProductionApiClientTest {
 
     /**
      * This should not be accepted
-     * @throws Exception
      */
     @Test
     public void testTrack_SucceedsWithOnlyMessageId() throws Exception {

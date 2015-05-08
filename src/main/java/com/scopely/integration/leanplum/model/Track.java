@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.AbstractMap;
 import java.util.Set;
 
-public class Track extends MinimalMap {
+public class Track extends MinimalMap implements LeanplumMultiplexable {
     String event;
     Float value;
     String currencyCode;
@@ -45,5 +45,10 @@ public class Track extends MinimalMap {
                 new AbstractMap.SimpleImmutableEntry<>("messageId", messageId),
                 new AbstractMap.SimpleImmutableEntry<>("allowOffline", allowOffline)
                 );
+    }
+
+    @Override
+    public String action() {
+        return "track";
     }
 }

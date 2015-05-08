@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'com.squareup.retrofit:converter-jackson:1.9.0'
+    compile 'io.reactivex:rxjava:1.0.10'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.3.0'
+    compile 'com.squareup.okhttp:okhttp:2.3.0'
+    compile 'com.google.guava:guava:18.0'
+
+    compile 'com.intellij:annotations:12.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
+
+    // testing dependencies
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
+    testCompile 'org.mockito:mockito-all:1.10.7'
+    testCompile 'org.codehaus.groovy:groovy-all:2.3.0'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}

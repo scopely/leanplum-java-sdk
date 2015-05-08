@@ -3,6 +3,7 @@
 Uses Retrofit to encapsulate the Leanplum API.
 
 <a href="https://travis-ci.org/scopely/leanplum-java-sdk"><img src="https://travis-ci.org/scopely/leanplum-java-sdk.svg" /></a>
+[ ![Download](https://api.bintray.com/packages/avram/Scopely/leanplum-java-sdk/images/download.svg) ](https://bintray.com/avram/Scopely/leanplum-java-sdk/_latestVersion)
 
 The SDK is hosted on Bintray, to use it in your build, add the Maven repository to your repositories list:
 

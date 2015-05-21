@@ -19,4 +19,11 @@ public class DownloadFile extends MinimalMap {
     public Set<Entry<String, Object>> entrySet() {
         return Collections.singleton(new AbstractMap.SimpleImmutableEntry<>("filename", filename));
     }
+
+    @Override
+    public String toString() {
+        return "DownloadFile{" +
+                "filename='" + filename + '\'' +
+                '}';
+    }
 }

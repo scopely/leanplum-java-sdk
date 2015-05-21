@@ -32,6 +32,18 @@ public class LeanplumRequestBatchEntry {
         this.request = request;
     }
 
+    @Override
+    public String toString() {
+        return "LeanplumRequestBatchEntry{" +
+                "time=" + time +
+                ", deviceId='" + deviceId + '\'' +
+                ", devMode=" + devMode +
+                ", userId='" + userId + '\'' +
+                ", versionName='" + versionName + '\'' +
+                ", request=" + request +
+                '}';
+    }
+
     public static class LeanplumBatchEntrySerializer extends JsonSerializer<LeanplumRequestBatchEntry> {
         @Override
         public void serialize(LeanplumRequestBatchEntry value, JsonGenerator gen, SerializerProvider serializers) throws IOException {

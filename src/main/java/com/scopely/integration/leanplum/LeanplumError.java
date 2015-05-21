@@ -8,4 +8,11 @@ public class LeanplumError {
         error.message = message;
         return error;
     }
+
+    @Override
+    public String toString() {
+        return "LeanplumError{" +
+                "message='" + message + '\'' +
+                '}';
+    }
 }

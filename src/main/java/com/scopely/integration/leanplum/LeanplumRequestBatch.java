@@ -11,4 +11,11 @@ public class LeanplumRequestBatch {
     public LeanplumRequestBatch(List<LeanplumRequestBatchEntry> batch) {
         this.data = batch;
     }
+
+    @Override
+    public String toString() {
+        return "LeanplumRequestBatch{" +
+                "data=" + data +
+                '}';
+    }
 }

@@ -51,4 +51,17 @@ public class Track extends MinimalMap implements LeanplumMultiplexable {
     public String action() {
         return "track";
     }
+
+    @Override
+    public String toString() {
+        return "Track{" +
+                "event='" + event + '\'' +
+                ", value=" + value +
+                ", currencyCode='" + currencyCode + '\'' +
+                ", info='" + info + '\'' +
+                ", params=" + params +
+                ", messageId=" + messageId +
+                ", allowOffline=" + allowOffline +
+                '}';
+    }
 }

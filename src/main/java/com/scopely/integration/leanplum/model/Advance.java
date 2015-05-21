@@ -34,4 +34,13 @@ public class Advance extends MinimalMap implements LeanplumMultiplexable {
                 new AbstractMap.SimpleImmutableEntry<>("params", params == null ? null : params.toString())
         );
     }
+
+    @Override
+    public String toString() {
+        return "Advance{" +
+                "state='" + state + '\'' +
+                ", info='" + info + '\'' +
+                ", params=" + params +
+                '}';
+    }
 }

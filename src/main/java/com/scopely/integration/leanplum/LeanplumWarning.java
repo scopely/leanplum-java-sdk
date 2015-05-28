@@ -1,12 +1,12 @@
 package com.scopely.integration.leanplum;
 
 public class LeanplumWarning {
-    public String warning;
+    public String message;
 
     @Override
     public String toString() {
         return "LeanplumWarning{" +
-                "warning='" + warning + '\'' +
+                "message='" + message + '\'' +
                 '}';
     }
 }

@@ -38,6 +38,13 @@ public class TrackTest extends ProductionApiClientTest {
         testSubscriber.assertNoErrors();
     }
 
+
+    @Test
+    public void testTrack_withName_andParams() throws Exception {
+        TestSubscriber<LeanplumActionResponse> testSubscriber = track(new Track("my_event", null, null, null, ActionParams.of("key", 12), null, true));
+        testSubscriber.assertNoErrors();
+    }
+
     private TestSubscriber<LeanplumActionResponse> track(Track track) {
         return awaitAndTransform(leanplumApi.track(track));
     }

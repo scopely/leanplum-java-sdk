@@ -13,7 +13,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 public class MultiTrackTest extends ProductionApiClientTest {
     @Test
     public void testTrackTrackTrack() throws Exception {
-        Observable<LeanplumResponse> multi = leanplumApi.multi(Instant.now().getEpochSecond(),
+        Observable<LeanplumResponse<LeanplumActionResponse>> multi = leanplumApi.multi(Instant.now().getEpochSecond(),
                 new LeanplumRequestBatch(
                         Arrays.asList(
                                 new LeanplumRequestBatchEntry(Instant.now(), null, true, "me", null, new Track("event", null, null, null, null, null, true)),

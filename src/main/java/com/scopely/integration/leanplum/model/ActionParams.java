@@ -4,10 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ActionParams extends HashMap<String, Object> {
+public final class ActionParams extends HashMap<String, Object> {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     public ActionParams(Map<? extends String, ?> m) {
@@ -35,5 +36,9 @@ public class ActionParams extends HashMap<String, Object> {
 
     public static ActionParams of(String k, Object v, String k2, Object v2, String k3, Object v3) {
         return new ActionParams(ImmutableMap.of(k, v, k2, v2, k3, v3));
+    }
+
+    public static ActionParams empty() {
+        return new ActionParams(Collections.emptyMap());
     }
 }

@@ -8,14 +8,16 @@ import rx.Observable;
 import rx.observers.TestSubscriber;
 
 public class ProductionApiClientTest {
+    private ObjectMapper objectMapper = new ObjectMapper();
+
     LeanplumApi leanplumApi;
+    private String appId;
+    private String key;
 
     @Before
     public void setUp() throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        String appId = System.getenv("LEANPLUM_APP_ID");
-        String key = System.getenv("LEANPLUM_KEY");
+        appId = System.getenv("LEANPLUM_APP_ID");
+        key = System.getenv("LEANPLUM_KEY");
 
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -28,7 +30,19 @@ public class ProductionApiClientTest {
         leanplumApi = restAdapter.create(LeanplumApi.class);
     }
 
-    protected TestSubscriber<LeanplumActionResponse> awaitAndTransform(Observable<LeanplumResponse> observable) {
+    protected LeanplumApi apiForDevice(String deviceId) {
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint("https://www.leanplum.com")
+                .setRequestInterceptor(
+                        LeanplumInterceptor.createInterceptorWithDeviceId(appId, key, true, deviceId))
+                .setConverter(new JacksonConverter(objectMapper))
+                .build();
+
+        return restAdapter.create(LeanplumApi.class);
+    }
+
+    protected <T extends LeanplumActionResponse> TestSubscriber<LeanplumActionResponse> awaitAndTransform(Observable<LeanplumResponse<T>> observable) {
         TestSubscriber<LeanplumActionResponse> testSubscriber = new TestSubscriber<>();
 
         observable

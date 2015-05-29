@@ -1,5 +1,6 @@
 package com.scopely.integration.leanplum;
 
+import com.scopely.integration.leanplum.model.ActionParams;
 import com.scopely.integration.leanplum.model.SendMessage;
 import com.scopely.integration.leanplum.model.SendMessageResponse;
 import org.junit.Test;
@@ -21,7 +22,19 @@ public class SendMessageTest extends ProductionApiClientTest {
 
     @Test
     public void testSendMessage_realRecipient() throws Exception {
-        TestSubscriber<LeanplumActionResponse> testSubscriber = awaitAndTransform(apiForDevice("d926b3ba-8e45-4545-a220-f449f1b24679").sendMessage(new SendMessage(4976713210003456l)));
+        TestSubscriber<LeanplumActionResponse> testSubscriber = awaitAndTransform(apiForDevice("d926b3ba-8e45-4545-a220-f449f1b24679").sendMessage(new SendMessage(6219785998696448l)));
+        testSubscriber.assertNoErrors();
+        assertThat(testSubscriber.getOnNextEvents()).hasSize(1);
+        assertThat(testSubscriber.getOnNextEvents().get(0)).isInstanceOf(SendMessageResponse.class);
+        SendMessageResponse response = (SendMessageResponse) testSubscriber.getOnNextEvents().get(0);
+        // Recipient is a match
+        assertThat(response.messagesSent).isEqualTo(1);
+    }
+
+    @Test
+    public void testSendMessage_realRecipient_withParams() throws Exception {
+        TestSubscriber<LeanplumActionResponse> testSubscriber = awaitAndTransform(apiForDevice("d926b3ba-8e45-4545-a220-f449f1b24679").sendMessage(new SendMessage(6219785998696448l,
+                ActionParams.of("name", "Jane User", "numMessages", 2))));
         testSubscriber.assertNoErrors();
         assertThat(testSubscriber.getOnNextEvents()).hasSize(1);
         assertThat(testSubscriber.getOnNextEvents().get(0)).isInstanceOf(SendMessageResponse.class);

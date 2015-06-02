@@ -42,6 +42,18 @@ public class ProductionApiClientTest {
         return restAdapter.create(LeanplumApi.class);
     }
 
+    protected LeanplumApi apiMulti() {
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint("https://www.leanplum.com")
+                .setRequestInterceptor(
+                        LeanplumInterceptor.createMultiInterceptor(appId, key, true))
+                .setConverter(new JacksonConverter(objectMapper))
+                .build();
+
+        return restAdapter.create(LeanplumApi.class);
+    }
+
     protected <T extends LeanplumActionResponse> TestSubscriber<LeanplumActionResponse> awaitAndTransform(Observable<LeanplumResponse<T>> observable) {
         TestSubscriber<LeanplumActionResponse> testSubscriber = new TestSubscriber<>();
 

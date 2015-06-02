@@ -3,11 +3,13 @@ package com.scopely.integration.leanplum;
 import com.scopely.integration.leanplum.model.ActionParams;
 import com.scopely.integration.leanplum.model.SendMessage;
 import com.scopely.integration.leanplum.model.SendMessageResponse;
+import org.junit.Ignore;
 import org.junit.Test;
 import rx.observers.TestSubscriber;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
+@Ignore("This requires a test account with actual devices to succeed")
 public class SendMessageTest extends ProductionApiClientTest {
     @Test
     public void testSendMessage_noRecipient() throws Exception {

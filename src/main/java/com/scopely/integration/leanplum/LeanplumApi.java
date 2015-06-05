@@ -3,6 +3,8 @@ package com.scopely.integration.leanplum;
 
 import com.scopely.integration.leanplum.model.Advance;
 import com.scopely.integration.leanplum.model.DownloadFile;
+import com.scopely.integration.leanplum.model.SendMessageResponse;
+import com.scopely.integration.leanplum.model.SendMessage;
 import com.scopely.integration.leanplum.model.Track;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -19,18 +21,21 @@ public interface LeanplumApi {
      * <a href="https://www.leanplum.com/dashboard#/5064964386062336/help/setup/api/advance">Advance Docs</a>
      */
     @GET("/api?action=advance")
-    Observable<LeanplumResponse> advance(@QueryMap Advance advance);
+    Observable<LeanplumResponse<LeanplumActionResponse>>  advance(@QueryMap Advance advance);
 
     /**
      * <a href="https://www.leanplum.com/dashboard#/5064964386062336/help/setup/api/track">Track Docs</a>
      */
     @GET("/api?action=track")
-    Observable<LeanplumResponse> track(@QueryMap Track track);
+    Observable<LeanplumResponse<LeanplumActionResponse>> track(@QueryMap Track track);
 
     @GET("/api?action=downloadFile")
-    Observable<LeanplumResponse> downloadFile(@QueryMap DownloadFile downloadFile);
+    Observable<LeanplumResponse<LeanplumActionResponse>>  downloadFile(@QueryMap DownloadFile downloadFile);
+
+    @GET("/api?action=sendMessage")
+    Observable<LeanplumResponse<SendMessageResponse>> sendMessage(@QueryMap SendMessage sendMessage);
 
     @POST("/api?action=multi")
-    Observable<LeanplumResponse> multi(@Query("time") long epochSeconds, @Body LeanplumRequestBatch batch);
+    Observable<LeanplumResponse<LeanplumActionResponse>>  multi(@Query("time") long epochSeconds, @Body LeanplumRequestBatch batch);
 
 }

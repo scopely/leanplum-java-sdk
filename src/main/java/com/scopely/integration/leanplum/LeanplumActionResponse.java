@@ -12,7 +12,7 @@ public class LeanplumActionResponse {
                 "success=" + success +
                 ", isOffline=" + isOffline +
                 ", error=" + error +
-                ", warning=" + warning +
+                ", message=" + warning +
                 '}';
     }
 }

@@ -13,15 +13,18 @@ public class Track extends MinimalMap implements LeanplumMultiplexable {
     String currencyCode;
     String info;
     ActionParams params;
-    Integer messageId;
+    Long messageId;
     boolean allowOffline;
+
+    public Track() {
+    }
 
     public Track(String event,
                  Float value,
                  String currencyCode,
                  String info,
                  ActionParams params,
-                 Integer messageId,
+                 Long messageId,
                  boolean allowOffline) {
         this.event = event;
         this.value = value;
@@ -29,6 +32,34 @@ public class Track extends MinimalMap implements LeanplumMultiplexable {
         this.info = info;
         this.params = params;
         this.messageId = messageId;
+        this.allowOffline = allowOffline;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+
+    public void setValue(Float value) {
+        this.value = value;
+    }
+
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public void setParams(ActionParams params) {
+        this.params = params;
+    }
+
+    public void setMessageId(Long messageId) {
+        this.messageId = messageId;
+    }
+
+    public void setAllowOffline(boolean allowOffline) {
         this.allowOffline = allowOffline;
     }
 
@@ -41,7 +72,7 @@ public class Track extends MinimalMap implements LeanplumMultiplexable {
                 new AbstractMap.SimpleImmutableEntry<>("value", value),
                 new AbstractMap.SimpleImmutableEntry<>("currencyCode", currencyCode),
                 new AbstractMap.SimpleImmutableEntry<>("info", info),
-                new AbstractMap.SimpleImmutableEntry<>("params", params == null ? null : params.toString()),
+                new AbstractMap.SimpleImmutableEntry<>("params", params == null ? null : params),
                 new AbstractMap.SimpleImmutableEntry<>("messageId", messageId),
                 new AbstractMap.SimpleImmutableEntry<>("allowOffline", allowOffline)
                 );

@@ -36,6 +36,5 @@ public interface LeanplumApi {
     Observable<LeanplumResponse<SendMessageResponse>> sendMessage(@QueryMap SendMessage sendMessage);
 
     @POST("/api?action=multi")
-    Observable<LeanplumResponse<LeanplumActionResponse>>  multi(@Query("time") long epochSeconds, @Body LeanplumRequestBatch batch);
-
+    Observable<LeanplumResponse<LeanplumActionResponse>> multi(@Query("time") long epochSeconds, @Body LeanplumRequestBatch batch);
 }

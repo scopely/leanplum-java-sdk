@@ -73,27 +73,46 @@ public abstract class MinimalMap implements Map<String, Object> {
      */
     public static class MinimalMapAppendingSerializer extends JsonSerializer<MinimalMap> {
         @Override
-        public void serialize(MinimalMap value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-            Set<Map.Entry<String, Object>> entries = value.entrySet();
+        public void serialize(MinimalMap map, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+            Set<Map.Entry<String, Object>> entries = map.entrySet();
 
             for (Map.Entry<String, Object> entry : entries) {
-                if (entry.getValue() == null) {
+                Object value = entry.getValue();
+                if (value == null) {
                     gen.writeNullField(entry.getKey());
                     continue;
                 }
 
-                if (Number.class.isAssignableFrom(entry.getValue().getClass())) {
+                if (Integer.class.isAssignableFrom(value.getClass())) {
                     // not sure about this
-                    gen.writeNumberField(entry.getKey(), ((Number) entry.getValue()).doubleValue());
+                    gen.writeNumberField(entry.getKey(), ((Number) value).intValue());
                     continue;
                 }
 
-                if (entry.getValue() instanceof Boolean) {
-                    gen.writeBooleanField(entry.getKey(), (Boolean) entry.getValue());
+                if (Long.class.isAssignableFrom(value.getClass())) {
+                    // not sure about this
+                    gen.writeNumberField(entry.getKey(), ((Number) value).longValue());
                     continue;
                 }
 
-                gen.writeStringField(entry.getKey(), entry.getValue().toString());
+                if (Double.class.isAssignableFrom(value.getClass()) || Number.class.isAssignableFrom(value.getClass())) {
+                    // not sure about this
+                    gen.writeNumberField(entry.getKey(), ((Number) value).doubleValue());
+                    continue;
+                }
+
+                if (value instanceof Boolean) {
+                    gen.writeBooleanField(entry.getKey(), (Boolean) value);
+                    continue;
+                }
+
+                if (value instanceof Map) {
+                    gen.writeFieldName(entry.getKey());
+                    serializers.defaultSerializeValue(value, gen);
+                    continue;
+                }
+
+                gen.writeStringField(entry.getKey(), value.toString());
             }
 
         }

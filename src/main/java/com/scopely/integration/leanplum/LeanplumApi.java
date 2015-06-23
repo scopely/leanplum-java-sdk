@@ -3,6 +3,8 @@ package com.scopely.integration.leanplum;
 
 import com.scopely.integration.leanplum.model.Advance;
 import com.scopely.integration.leanplum.model.DownloadFile;
+import com.scopely.integration.leanplum.model.GetVars;
+import com.scopely.integration.leanplum.model.GetVarsResponse;
 import com.scopely.integration.leanplum.model.SendMessageResponse;
 import com.scopely.integration.leanplum.model.SendMessage;
 import com.scopely.integration.leanplum.model.Track;
@@ -34,6 +36,9 @@ public interface LeanplumApi {
 
     @GET("/api?action=sendMessage")
     Observable<LeanplumResponse<SendMessageResponse>> sendMessage(@QueryMap SendMessage sendMessage);
+
+    @GET("/api?action=getVars")
+    Observable<LeanplumResponse<GetVarsResponse>> getVars(@QueryMap GetVars getVars);
 
     @POST("/api?action=multi")
     Observable<LeanplumResponse<LeanplumActionResponse>> multi(@Query("time") long epochSeconds, @Body LeanplumRequestBatch batch);

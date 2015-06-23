@@ -5,6 +5,8 @@ import com.scopely.integration.leanplum.model.Advance;
 import org.junit.Test;
 import rx.observers.TestSubscriber;
 
+import static org.fest.assertions.api.Assertions.assertThat;
+
 public class AdvanceTest extends ProductionApiClientTest {
 
     /**
@@ -13,12 +15,16 @@ public class AdvanceTest extends ProductionApiClientTest {
     @Test
     public void testAdvance_succeedWithEmptyPayload() throws Exception {
         TestSubscriber<LeanplumActionResponse> subscriber = awaitAndTransform(leanplumApi.advance(new Advance(null, null, null)));
-        subscriber.assertNoErrors();
+        Throwable throwable = subscriber.getOnErrorEvents().get(0);
+        // We're not in a session, so this should fail
+        assertThat(throwable).isInstanceOf(LeanplumException.class);
     }
 
     @Test
     public void testAdvance_succeedWithProperPayload() throws Exception {
         TestSubscriber<LeanplumActionResponse> subscriber = awaitAndTransform(leanplumApi.advance(new Advance("really_cool_state", "useful info", ActionParams.of("gender", "F"))));
-        subscriber.assertNoErrors();
+        Throwable throwable = subscriber.getOnErrorEvents().get(0);
+        // Not in a session, so this should fail
+        assertThat(throwable).isInstanceOf(LeanplumException.class);
     }
 }

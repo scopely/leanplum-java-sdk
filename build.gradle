@@ -45,7 +45,7 @@ bintray {
     configurations = ['archives']
 
     pkg {
-        repo = 'scopely-oss'
+        repo = 'scopely-maven'
         name = 'leanplum-java-sdk'
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/scopely/leanplum-java-sdk.git'

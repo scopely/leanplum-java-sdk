@@ -27,3 +27,6 @@ repositories {
 Make sure to set the environment variables `LEANPLUM_APP_ID` and `LEANPLUM_KEY` to
 a set of valid development credentials in order to run the tests. You should use
 a sandbox test app for this.
+
+## Deploying
+This library builds automatically on Travis-CI, and successful builds from the master branch auto-deploy to Bintray.

@@ -2,14 +2,11 @@ package com.scopely.integration.leanplum;
 
 import com.scopely.integration.leanplum.model.ActionParams;
 import com.scopely.integration.leanplum.model.Track;
-import org.junit.Ignore;
 import org.junit.Test;
-import retrofit.RetrofitError;
 import rx.observers.TestSubscriber;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-@Ignore("These are currently returning reliable 500 errors; ticket opened with Leanplum")
 public class TrackTest extends ProductionApiClientTest {
     @Test
     public void testTrack_FailsWithEmptyPayload() throws Exception {
@@ -26,12 +23,13 @@ public class TrackTest extends ProductionApiClientTest {
         testSubscriber.assertNoErrors();
     }
 
-    @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
+    /**
+     * Per the docs, this shouldn't succeed;
+     */
     @Test
     public void testTrack_SucceedsWithOnlyMessageId() throws Exception {
         TestSubscriber<LeanplumActionResponse> testSubscriber = track(new Track(null, null, null, null, null, 12L, true));
-        Throwable throwable = testSubscriber.getOnErrorEvents().get(0);
-        assertThat(throwable).isInstanceOf(RetrofitError.class);
+        testSubscriber.assertNoErrors();
     }
 
     @Test

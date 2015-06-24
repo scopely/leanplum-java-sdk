@@ -2,7 +2,7 @@ language: java
 script:
 - "./gradlew check"
 after_success:
-- "./gradlew bintrayUpload"
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && ./gradlew bintrayUpload
 jdk:
 - oraclejdk8
 env:

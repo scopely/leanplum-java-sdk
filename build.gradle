@@ -44,8 +44,11 @@ bintray {
     key = System.getenv('BINTRAY_KEY') ?: project.hasProperty('bintrayKey') ? project.bintrayKey : ''
     configurations = ['archives']
 
+    publish = true
+
     pkg {
         repo = 'scopely-maven'
+        userOrg = 'scopely-oss'
         name = 'leanplum-java-sdk'
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/scopely/leanplum-java-sdk.git'

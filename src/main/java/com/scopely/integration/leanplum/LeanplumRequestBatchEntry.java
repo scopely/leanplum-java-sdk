@@ -23,12 +23,34 @@ public class LeanplumRequestBatchEntry {
 
     LeanplumMultiplexable request;
 
-    public LeanplumRequestBatchEntry(Instant time, @Nullable String deviceId, boolean devMode, @Nullable String userId, @Nullable String versionName, LeanplumMultiplexable request) {
+    public LeanplumRequestBatchEntry(Instant time,
+                                     @Nullable String deviceId,
+                                     boolean devMode,
+                                     @Nullable String userId,
+                                     @Nullable String versionName,
+                                     LeanplumMultiplexable request) {
         this.time = time;
         this.deviceId = deviceId;
         this.devMode = devMode;
         this.userId = userId;
         this.versionName = versionName;
+        this.request = request;
+    }
+
+    /**
+     * Batch entry constructor excluding version name. Version will be pulled from the library's MANIFEST.MF, generated
+     * at build time.
+     */
+    public LeanplumRequestBatchEntry(Instant time,
+                                     @Nullable String deviceId,
+                                     boolean devMode,
+                                     @Nullable String userId,
+                                     LeanplumMultiplexable request) {
+        this.time = time;
+        this.deviceId = deviceId;
+        this.devMode = devMode;
+        this.userId = userId;
+        this.versionName = getClass().getPackage().getImplementationVersion();
         this.request = request;
     }
 
@@ -69,6 +91,4 @@ public class LeanplumRequestBatchEntry {
             gen.writeEndObject();
         }
     }
-
-    public static final LeanplumBatchEntrySerializer SERIALIZER = new LeanplumBatchEntrySerializer();
 }

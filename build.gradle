@@ -32,6 +32,13 @@ dependencies {
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 }
 
+jar {
+    manifest {
+        attributes  'Implementation-Title': 'Leanplum Java SDK',
+                    'Implementation-Version': version
+    }
+}
+
 bintray {
     user = System.getenv('BINTRAY_USER') ?: project.hasProperty('bintrayUser') ? project.bintrayUser : ''
     key = System.getenv('BINTRAY_KEY') ?: project.hasProperty('bintrayKey') ? project.bintrayKey : ''

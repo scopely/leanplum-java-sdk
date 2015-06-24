@@ -44,6 +44,8 @@ bintray {
     key = System.getenv('BINTRAY_KEY') ?: project.hasProperty('bintrayKey') ? project.bintrayKey : ''
     configurations = ['archives']
 
+    publish = true
+
     pkg {
         repo = 'scopely-maven'
         userOrg = 'scopely-oss'

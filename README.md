@@ -15,7 +15,6 @@ repositories {
 }
 ```
 
-For details of versions and how to download releases, see https://bintray.com/avram/Scopely/leanplum-java-sdk
 
 ## API Coverage
 

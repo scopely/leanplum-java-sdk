@@ -24,7 +24,7 @@ public class TrackTest extends ProductionApiClientTest {
     }
 
     /**
-     * This should not be accepted
+     * Per the docs, this shouldn't succeed;
      */
     @Test
     public void testTrack_SucceedsWithOnlyMessageId() throws Exception {

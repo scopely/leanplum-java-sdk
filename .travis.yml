@@ -2,7 +2,7 @@ language: java
 script:
 - "./gradlew check"
 after_success:
-- "./gradlew bintrayUpload"
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && ./gradlew bintrayUpload
 jdk:
 - oraclejdk8
 env:
@@ -14,3 +14,5 @@ env:
 notifications:
   slack:
     secure: FLc4rMttuySyilk3s4Rpm/LY7jdbKMO3BrDv+MsOJ4xTuqawlMm9a92vXBFOwm/+R7EbSQ8qrsRqyK8ZcqrTZZRRkL4x9lqvKcyWYrFBsOuPHm9LURi3JB6pEdSGrOm8ysQfbEpSjSqV0OLWfRvuqSRWTPX1LZXLF4cGXPkJa2+7WGMrg7b1CXC4PyyTp5PnQYZ8VdomsDqS34GxThqEgY2gEBcwcpVQlh+hE6ly5WqPrRjdCjqq6hldFcpva5WuB3NWmhBdYM/y2DFvbhVD1h8LMFKQa+qTN1GY8iPY1RmhssAUCSpEFnspan+j+KyBhqcWcmxGTGzv90CUnSO1oAINum/wxcDtI3W1hNiBQY1V3PMz9BH2weUwM793N/vcC2dmrUyPF2QlkuPmoNLxsh80Hd2Vg3XHDL3lSEcQGz69Pop5KnrOzmWId/kEb87Nm2tCZhU8w4iZWKeyGU7zrx4SjluGW6BefA1thhrm9fHHzsDuELk3vuZQmnLiW7dN1MIjCTyrfD7gjcYHC3pdCqL2atWke1BOnfGG/6sABiZIHZ2rch3oG7+0mGkDtKJfw37hTd0L6Or98ONDpLrwwCA4jLShXRUGawXRUn/oxIDt6ZrmIevgU9yLb284ZLYpy5IDUhUV9CmwzShacVvR727ELltSc10XUU8qOa5rQbg=
+    on_success: never
+    on_failure: always

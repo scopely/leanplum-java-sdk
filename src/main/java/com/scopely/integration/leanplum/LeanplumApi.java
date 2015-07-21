@@ -5,9 +5,10 @@ import com.scopely.integration.leanplum.model.Advance;
 import com.scopely.integration.leanplum.model.DownloadFile;
 import com.scopely.integration.leanplum.model.GetVars;
 import com.scopely.integration.leanplum.model.GetVarsResponse;
-import com.scopely.integration.leanplum.model.SendMessageResponse;
 import com.scopely.integration.leanplum.model.SendMessage;
+import com.scopely.integration.leanplum.model.SendMessageResponse;
 import com.scopely.integration.leanplum.model.Track;
+
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;
@@ -39,6 +40,9 @@ public interface LeanplumApi {
 
     @GET("/api?action=getVars")
     Observable<LeanplumResponse<GetVarsResponse>> getVars(@QueryMap GetVars getVars);
+
+    @GET("/api?action=getMessages")
+    Observable<LeanplumResponse<GetMessagesResponse>> getMessages();
 
     @POST("/api?action=multi")
     Observable<LeanplumResponse<LeanplumActionResponse>> multi(@Query("time") long epochSeconds, @Body LeanplumRequestBatch batch);

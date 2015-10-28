@@ -41,6 +41,12 @@ public interface LeanplumApi {
     @GET("/api?action=getVars")
     Observable<LeanplumResponse<GetVarsResponse>> getVars(@QueryMap GetVars getVars);
 
+    /**
+     * @param recent    Defaults to true; see {@link #getMessages()}
+     */
+    @GET("/api?action=getMessages")
+    Observable<LeanplumResponse<GetMessagesResponse>> getMessages(@Query("recent") boolean recent);
+
     @GET("/api?action=getMessages")
     Observable<LeanplumResponse<GetMessagesResponse>> getMessages();
 

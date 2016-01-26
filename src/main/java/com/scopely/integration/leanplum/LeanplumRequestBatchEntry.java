@@ -54,6 +54,33 @@ public class LeanplumRequestBatchEntry {
         this.request = request;
     }
 
+    public Instant getTime() {
+        return time;
+    }
+
+    @Nullable
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public boolean isDevMode() {
+        return devMode;
+    }
+
+    @Nullable
+    public String getUserId() {
+        return userId;
+    }
+
+    @Nullable
+    public String getVersionName() {
+        return versionName;
+    }
+
+    public LeanplumMultiplexable getRequest() {
+        return request;
+    }
+
     @Override
     public String toString() {
         return "LeanplumRequestBatchEntry{" +

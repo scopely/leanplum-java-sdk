@@ -33,6 +33,22 @@ public class SetUserAttributes extends MinimalMap implements LeanplumMultiplexab
         this.newUserId = newUserId;
     }
 
+    public Map<String, Object> getUserAttributes() {
+        return userAttributes;
+    }
+
+    public Map<String, Object> getUserAttributeValuesToAdd() {
+        return userAttributeValuesToAdd;
+    }
+
+    public Map<String, Object> getUserAttributeValuesToRemove() {
+        return userAttributeValuesToRemove;
+    }
+
+    public String getNewUserId() {
+        return newUserId;
+    }
+
     @Override
     public String action() {
         return "setUserAttributes";

@@ -30,6 +30,18 @@ public class SendMessage extends MinimalMap implements LeanplumMultiplexable {
         this.force = false;
     }
 
+    public long getMessageId() {
+        return messageId;
+    }
+
+    public boolean isForce() {
+        return force;
+    }
+
+    public ActionParams getValues() {
+        return values;
+    }
+
     @Override
     public String action() {
         return "sendMessage";

@@ -19,6 +19,18 @@ public class Advance extends MinimalMap implements LeanplumMultiplexable {
         this.params = params;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public ActionParams getParams() {
+        return params;
+    }
+
     @Override
     public String action() {
         return "advance";

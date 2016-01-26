@@ -14,6 +14,10 @@ public class DownloadFile extends MinimalMap {
         this.filename = filename;
     }
 
+    public String getFilename() {
+        return filename;
+    }
+
     @NotNull
     @Override
     public Set<Entry<String, Object>> entrySet() {

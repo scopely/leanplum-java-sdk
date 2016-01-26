@@ -63,6 +63,34 @@ public class Track extends MinimalMap implements LeanplumMultiplexable {
         this.allowOffline = allowOffline;
     }
 
+    public String getEvent() {
+        return event;
+    }
+
+    public Float getValue() {
+        return value;
+    }
+
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public ActionParams getParams() {
+        return params;
+    }
+
+    public Long getMessageId() {
+        return messageId;
+    }
+
+    public boolean isAllowOffline() {
+        return allowOffline;
+    }
+
     @NotNull
     @Override
     public Set<Entry<String, Object>> entrySet() {

@@ -106,13 +106,12 @@ public abstract class MinimalMap implements Map<String, Object> {
                     continue;
                 }
 
-                if (Collection.class.isAssignableFrom(value.getClass())) {
-                    gen.writeFieldName(entry.getKey());
-                    gen.writeObject(value);
+                if (value instanceof String) {
+                    gen.writeStringField(entry.getKey(), (String) value);
                     continue;
                 }
 
-                gen.writeStringField(entry.getKey(), value.toString());
+                gen.writeObjectField(entry.getKey(), value);
             }
 
         }

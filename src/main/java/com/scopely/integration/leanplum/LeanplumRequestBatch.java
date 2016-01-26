@@ -18,4 +18,8 @@ public class LeanplumRequestBatch {
                 "data=" + data +
                 '}';
     }
+
+    public List<LeanplumRequestBatchEntry> getData() {
+        return data;
+    }
 }

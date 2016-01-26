@@ -18,7 +18,7 @@ public abstract class MinimalMap implements Map<String, Object> {
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException();
+        return entrySet().isEmpty();
     }
 
     @Override
@@ -106,9 +106,9 @@ public abstract class MinimalMap implements Map<String, Object> {
                     continue;
                 }
 
-                if (value instanceof Map) {
+                if (Collection.class.isAssignableFrom(value.getClass())) {
                     gen.writeFieldName(entry.getKey());
-                    serializers.defaultSerializeValue(value, gen);
+                    gen.writeObject(value);
                     continue;
                 }
 

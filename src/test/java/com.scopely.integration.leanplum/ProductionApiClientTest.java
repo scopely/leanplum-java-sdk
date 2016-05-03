@@ -1,7 +1,10 @@
 package com.scopely.integration.leanplum;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.junit.Before;
+
 import retrofit.RestAdapter;
 import retrofit.converter.JacksonConverter;
 import rx.Observable;
@@ -18,6 +21,8 @@ public class ProductionApiClientTest {
     public void setUp() throws Exception {
         appId = System.getenv("LEANPLUM_APP_ID");
         key = System.getenv("LEANPLUM_KEY");
+
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)

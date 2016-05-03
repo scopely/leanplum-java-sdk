@@ -28,13 +28,13 @@ public class TrackTest extends ProductionApiClientTest {
      */
     @Test
     public void testTrack_SucceedsWithOnlyMessageId() throws Exception {
-        TestSubscriber<LeanplumActionResponse> testSubscriber = track(new Track(null, null, null, null, null, 12L, true));
+        TestSubscriber<LeanplumActionResponse> testSubscriber = track(new Track(null, null, null, null, null, 4539350314909696L, true));
         testSubscriber.assertNoErrors();
     }
 
     @Test
     public void testTrack_withParams() throws Exception {
-        TestSubscriber<LeanplumActionResponse> testSubscriber = track(new Track(null, null, null, null, ActionParams.of("key", 12), 12L, true));
+        TestSubscriber<LeanplumActionResponse> testSubscriber = track(new Track(null, null, null, null, ActionParams.of("key", 12), 4539350314909696L, true));
         testSubscriber.assertNoErrors();
     }
 

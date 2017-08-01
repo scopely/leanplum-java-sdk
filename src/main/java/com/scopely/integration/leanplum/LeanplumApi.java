@@ -50,6 +50,6 @@ public interface LeanplumApi {
     @GET("/api?action=getMessages")
     Observable<LeanplumResponse<GetMessagesResponse>> getMessages();
 
-    @POST("/api?action=multi")
+    @POST("/api-batch?action=multi")
     Observable<LeanplumResponse<LeanplumActionResponse>> multi(@Query("time") long epochSeconds, @Body LeanplumRequestBatch batch);
 }

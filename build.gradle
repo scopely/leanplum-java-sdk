@@ -22,7 +22,7 @@ dependencies {
     compile 'com.google.guava:guava:18.0'
 
     compile 'com.intellij:annotations:12.0'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.4'
 
     // testing dependencies
     testCompile 'junit:junit:4.11'
